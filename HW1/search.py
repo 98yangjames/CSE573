@@ -91,21 +91,28 @@ def depthFirstSearch(problem):
     dfs = []
 
     #Push the starting point onto Stack
-    stack.push((problem.getStartState(), dfs))
-
-    print("Is the start a goal?", problem.isGoalState(problem.getStartState()))
-    print("Start's successors:", problem.getSuccessors(problem.getStartState()))
+    stack.push((problem.getStartState(), []))
 
 
     while stack.isEmpty() == False:
-        current, steps = stack.pop()
-        dfs.append(current)
-        for state, action, cost in problem.getSuccessors(current):
-            print(state)
-            print(action)
-            print(cost)
+        current, path = stack.pop()
+        #if the current node isn't in the stack, then add it.
+        if current not in dfs:
+            dfs.append(current)
+        #if current is in stack, then skip
+        elif current in dfs:
+            continue
+        #if we reached the goal, return
+        if problem.isGoalState(current):
+            return path
 
-    return []
+        for location, direction, distance in problem.getSuccessors(current):
+            stack.push((location, path + [direction]))
+        print("----------")
+        print(dfs)
+
+
+    return
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
