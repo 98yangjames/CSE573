@@ -87,14 +87,23 @@ def depthFirstSearch(problem):
     print("Start's successors:", problem.getSuccessors(problem.getStartState()))
     """
     "*** YOUR CODE HERE ***"
-    stack = util.Stack()
+#Informed search Slide 58
+    #loop do
+        #if fringe is empty then return failure
+        #remove front
+    #if goal
+        #return node
+    #for node in available
+        #insert into fringe
+    from util import Stack
+    stack = Stack()
     dfs = []
 
     #Push the starting point onto Stack
     stack.push((problem.getStartState(), []))
 
-
     while stack.isEmpty() == False:
+        #Grab the top node in the stack.
         current, path = stack.pop()
         #if the current node isn't in the stack, then add it.
         if current not in dfs:
@@ -103,13 +112,16 @@ def depthFirstSearch(problem):
         elif current in dfs:
             continue
         #if we reached the goal, return
-        if problem.isGoalState(current):
+        if problem.isGoalState(current) == True:
             return path
 
         for location, direction, distance in problem.getSuccessors(current):
-            stack.push((location, path + [direction]))
-        print("----------")
-        print(dfs)
+            #stack.push(self, array of movement)
+            pacman_direction = [direction]
+            #order must be path and then direction otherwise illegal movements can occur.
+            movement = path + pacman_direction
+            stack.push((location, movement))
+
 
     #python pacman.py -l tinyMaze -p SearchAgent -a fn=depthFirstSearch
     return
@@ -117,29 +129,75 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-
-    queue = util.Queue()
+# Informed search Slide 58
+    # loop do
+        # if fringe is empty then return failure
+        # remove front
+    # if goal
+        # return node
+    # for node in available
+        # insert into fringe
+    from util import Queue
+    queue = Queue()
     bfs = []
     queue.push((problem.getStartState(), []))
 
     while queue.isEmpty() == False:
+        # Grab the top node in the stack.
         current, path = queue.pop()
         if current not in bfs:
             bfs.append(current)
         # if current is in stack, then skip. If we don't add statement, it fails the last test case.
         elif current in bfs:
             continue
-        if problem.isGoalState(current):
+        if problem.isGoalState(current) == True:
             return path
 
         for location, direction, distance in problem.getSuccessors(current):
-            queue.push((location, path + [direction]))
+            #stack.push(self, array of movement)
+            pacman_direction = [direction]
+            #order must be path and then direction otherwise illegal movements can occur.
+            movement = path + pacman_direction
+            queue.push((location, movement))
+
+
     return
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    #Expand the cheapest node first
+    #Fringe priority queue -> cumulative cost
+    from util import PriorityQueue
+    pqueue = PriorityQueue()
+    ucs = []
+    #Gets starting location, pushes empty array with cost 0 because its the starting (cheapest) node.
+    start_state = (problem.getStartState(), [], 0)
+    #Give start state a priority of 0.
+    pqueue.push((start_state), 0)
+
+    while pqueue.isEmpty() == False:
+        # Grab the top node in the stack.
+        current, path, currentDistance = pqueue.pop()
+        if current not in ucs:
+            ucs.append(current)
+        # if current is in stack, then skip. If we don't add statement, it fails the last test case.
+        elif current in ucs:
+            continue
+        if problem.isGoalState(current) == True:
+            return path
+
+        for location, direction, distance in problem.getSuccessors(current):
+            # pqueue.push(position, array of movement, distance/cost)
+            pacman_direction = [direction]
+            # order must be path and then direction otherwise illegal movements can occur.
+            movement = path + pacman_direction
+            #distance found
+            new_distance = currentDistance + distance
+            new_state = (location, movement, new_distance)
+            pqueue.push(new_state, new_distance)
+
+        return
 
 def nullHeuristic(state, problem=None):
     """
