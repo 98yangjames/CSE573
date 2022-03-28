@@ -111,14 +111,30 @@ def depthFirstSearch(problem):
         print("----------")
         print(dfs)
 
-
+    #python pacman.py -l tinyMaze -p SearchAgent -a fn=depthFirstSearch
     return
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
 
-    util.raiseNotDefined()
+    queue = util.Queue()
+    bfs = []
+    queue.push((problem.getStartState(), []))
+
+    while queue.isEmpty() == False:
+        current, path = queue.pop()
+        if current not in bfs:
+            bfs.append(current)
+        # if current is in stack, then skip. If we don't add statement, it fails the last test case.
+        elif current in bfs:
+            continue
+        if problem.isGoalState(current):
+            return path
+
+        for location, direction, distance in problem.getSuccessors(current):
+            queue.push((location, path + [direction]))
+    return
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
