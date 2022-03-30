@@ -289,20 +289,26 @@ class CornersProblem(search.SearchProblem):
         # in initializing the problem
         "*** YOUR CODE HERE ***"
 
+
     def getStartState(self):
         """
         Returns the start state (in your state space, not the full Pacman state
         space)
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return (self.startingPosition, self.corners)
+
 
     def isGoalState(self, state):
         """
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        neighbors = state[1]
+        if(len(neighbors) == 0):
+            return True
+        else:
+            return False
 
     def getSuccessors(self, state):
         """
@@ -319,12 +325,29 @@ class CornersProblem(search.SearchProblem):
         for action in [Directions.NORTH, Directions.SOUTH, Directions.EAST, Directions.WEST]:
             # Add a successor state to the successor list if the action is legal
             # Here's a code snippet for figuring out whether a new position hits a wall:
-            #   x,y = currentPosition
-            #   dx, dy = Actions.directionToVector(action)
-            #   nextx, nexty = int(x + dx), int(y + dy)
-            #   hitsWall = self.walls[nextx][nexty]
-
             "*** YOUR CODE HERE ***"
+            #Stole the code given to us...
+            position = state[0]
+            x = position[0]
+            y = position[1]
+            dx, dy = Actions.directionToVector(action)
+            nextx, nexty = int(x + dx), int(y + dy)
+            hitsWall = self.walls[nextx][nexty]
+            
+            #If you don't a hit wall, we need to find the 'successor' to the current state
+            if hitsWall == False:
+                # tuples are immutuable so create list and mutate
+                new_neighbors = list(state[1])
+                # it'll give options to go back and forth so we need to remove that.
+                for (x,y) in new_neighbors:
+                    if(x,y) == (nextx, nexty):
+                        new_neighbors.remove((x,y))
+
+                triple = ( ((nextx, nexty) , new_neighbors), action, 1 )
+                successors.append(triple)
+            #If it hits the wall, continue
+            else:
+                continue
 
         self._expanded += 1 # DO NOT CHANGE
         return successors

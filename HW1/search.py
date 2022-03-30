@@ -179,6 +179,7 @@ def uniformCostSearch(problem):
     while pqueue.isEmpty() == False:
         # Grab the top node in the stack.
         current, path, currentDistance = pqueue.pop()
+
         if current not in ucs:
             ucs.append(current)
         # if current is in stack, then skip. If we don't add statement, it fails the last test case.
@@ -197,7 +198,7 @@ def uniformCostSearch(problem):
             new_state = (location, movement, new_distance)
             pqueue.push(new_state, new_distance)
 
-        return
+    return []
 
 def nullHeuristic(state, problem=None):
     """
@@ -209,8 +210,40 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    #Expand the cheapest node first
+    #Fringe priority queue -> cumulative cost
+    from util import PriorityQueue
+    pqueue = PriorityQueue()
+    ucs = []
+    #Gets starting location, pushes empty array with cost 0 because its the starting (cheapest) node.
+    start_state = (problem.getStartState(), [], 0)
+    #Give start state a priority of 0.
+    pqueue.push((start_state), 0)
 
+    while pqueue.isEmpty() == False:
+        # Grab the top node in the stack.
+        current, path, currentDistance = pqueue.pop()
+        if current not in ucs:
+            ucs.append(current)
+        # if current is in stack, then skip. If we don't add statement, it fails the last test case.
+        elif current in ucs:
+            continue
+        if problem.isGoalState(current) == True:
+            return path
+
+        for location, direction, distance in problem.getSuccessors(current):
+            # pqueue.push(position, array of movement, distance/cost)
+            pacman_direction = [direction]
+            # order must be path and then direction otherwise illegal movements can occur.
+            movement = path + pacman_direction
+            #distance found
+            new_distance = currentDistance + distance
+
+            new_state = (location, movement, new_distance)
+            #-------------------NOTE: This value has to be less than or equal to the actual distance. Otherwise this won't work. ---------------------------------
+            pqueue.push(new_state, new_distance+heuristic(location, problem))
+
+    return
 
 # Abbreviations
 bfs = breadthFirstSearch
