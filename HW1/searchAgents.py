@@ -383,7 +383,34 @@ def cornersHeuristic(state, problem):
     walls = problem.walls # These are the walls of the maze, as a Grid (game.py)
 
     "*** YOUR CODE HERE ***"
-    return 0 # Default to trivial solution
+
+    heuristic = 0
+    position_value = state[0]
+    corners_remaining = list(state[1])
+    while len(corners_remaining) != 0:
+        #initialize a set of distances
+        distances = []
+        #For every corner, find the distance from that point.
+        for corner in corners_remaining:
+            distance = util.manhattanDistance(position_value, corner)
+            #if there is no distance, then move on and assume that you're on the goal.
+            if(distance == 0):
+                continue
+            #otherwise, we need to move on and find another.
+            else:
+                distances.append((distance, corner))
+        #Find the lower bound -- minimum path/shortest path
+        currentDistance, currentCorner = min(distances)
+        #Add the heuristic values
+        heuristic += currentDistance
+
+        #Change the new position to the corner it just went to.
+        position_value = currentCorner
+        #Get rid of the corner that it found.
+        corners_remaining.remove(currentCorner)
+
+    return heuristic # Default to trivial solution
+
 
 class AStarCornersAgent(SearchAgent):
     "A SearchAgent for FoodSearchProblem using A* and your foodHeuristic"
@@ -477,7 +504,23 @@ def foodHeuristic(state, problem):
     """
     position, foodGrid = state
     "*** YOUR CODE HERE ***"
-    return 0
+    problem.heuristicInfo['wallCount'] = problem.walls.count()
+    distances = []
+
+    food_remaining = foodGrid.asList()
+    #if there isn't any food, then there's no heuristic.
+    if len(food_remaining) == 0:
+        return 0
+    else:
+        #check each food position distance and grab the largest one.
+        for food in food_remaining:
+
+            distance = mazeDistance(position, food, problem.startingGameState)
+            distances.append(distance)
+        max_distance = max(distances)
+
+    return max_distance
+
 
 class ClosestDotSearchAgent(SearchAgent):
     "Search for all food using a sequence of searches"
@@ -508,7 +551,7 @@ class ClosestDotSearchAgent(SearchAgent):
         problem = AnyFoodSearchProblem(gameState)
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        return search.bfs(problem)
 
 class AnyFoodSearchProblem(PositionSearchProblem):
     """
@@ -544,7 +587,12 @@ class AnyFoodSearchProblem(PositionSearchProblem):
         x,y = state
 
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        #If the position he's in is in the list of foods, he's made it.
+        if(x,y) in self.food.asList():
+            return True
+        else:
+            return False
+
 
 def mazeDistance(point1, point2, gameState):
     """
