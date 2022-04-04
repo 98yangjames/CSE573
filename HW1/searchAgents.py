@@ -304,6 +304,7 @@ class CornersProblem(search.SearchProblem):
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
+        #If there aren't any neighbors left, then you have reached the end.
         neighbors = state[1]
         if(len(neighbors) == 0):
             return True
@@ -509,9 +510,16 @@ def foodHeuristic(state, problem):
 
     food_remaining = foodGrid.asList()
     #if there isn't any food, then there's no heuristic.
+
+    #---- only got 3/4 ----
+    #for food in food_remaining:
+        #distance = util.manhattanDistance(position, food)
+    # --------------------
+
     if len(food_remaining) == 0:
         return 0
     else:
+        #alternative to manhattan
         #check each food position distance and grab the largest one.
         for food in food_remaining:
 

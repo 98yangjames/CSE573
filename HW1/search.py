@@ -115,6 +115,7 @@ def depthFirstSearch(problem):
         if problem.isGoalState(current) == True:
             return path
 
+        #iterate through the successors
         for location, direction, distance in problem.getSuccessors(current):
             #stack.push(self, array of movement)
             pacman_direction = [direction]
