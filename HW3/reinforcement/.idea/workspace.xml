@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="7e6e323f-7972-4a5b-9506-b0adc4232547" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../../HW1/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../HW1/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/reinforcement.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/reinforcement.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qlearningAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/qlearningAgents.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/1-tinygrid.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/2-tinygrid-noisy.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/3-bridge.test_output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_cases/q5/4-discountgrid.test_output" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/valueIterationAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/valueIterationAgents.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,7 +33,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -46,9 +52,13 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="334" y="5" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1652568619893" />
-    <state x="1033" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1652213572470">
+    <state x="342" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1652658683762">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1033" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1652213572470" />
+    <state x="342" y="437" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1652658683762" />
+    <state x="1033" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1652659965921">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1033" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1652659965921" />
   </component>
 </project>
