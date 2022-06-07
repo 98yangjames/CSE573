@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7e6e323f-7972-4a5b-9506-b0adc4232547" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qlearningAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/qlearningAgents.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/q5/1-tinygrid.test_output" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/q5/2-tinygrid-noisy.test_output" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/q5/3-bridge.test_output" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_cases/q5/4-discountgrid.test_output" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/valueIterationAgents.py" beforeDir="false" afterPath="$PROJECT_DIR$/valueIterationAgents.py" afterDir="false" />
-    </list>
+    <list default="true" id="7e6e323f-7972-4a5b-9506-b0adc4232547" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,6 +39,10 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="252" y="262" key="FileChooserDialogImpl" timestamp="1653693651431">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="252" y="262" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1653693651431" />
     <state x="334" y="5" key="SettingsEditor" timestamp="1652568619893">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
